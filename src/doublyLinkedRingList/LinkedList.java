@@ -33,6 +33,10 @@ public class LinkedList {
 		
 	}
 	
+	public void size() {
+		System.out.println("Lengt list: " + size);
+	}
+	
 	
 	public void print() {
 		if(tail == null) {
