@@ -57,8 +57,7 @@ public class LinkedList {
 			System.out.println(nod.value);
 			System.out.println("HEAD: " + nod.head);
 
-			System.out.println("NEXT: " + nod.next);
-			System.out.println("PREVIOS: " + nod.previus);
+	
 		}
 	}
 	
