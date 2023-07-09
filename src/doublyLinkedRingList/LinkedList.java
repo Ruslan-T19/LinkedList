@@ -28,9 +28,17 @@ public class LinkedList {
 		if(tail.value == value && tail.next == null) {
 			tail = null;
 		}else if(tail.value == value) {
-		//	tail.previus.next = ta
+			tail.previus.head = tail.head;
 		}
 		
+	}
+	
+	public boolean search(int value) {
+		if(tail.value == value) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	public void size() {
