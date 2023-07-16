@@ -25,20 +25,58 @@ public class LinkedList {
 	
 	public void delete(int value) {
 		
-		if(tail.value == value && tail.next == null) {
+		if(tail.value == value && tail.head == null) {
 			tail = null;
-		}else if(tail.value == value) {
-			tail.previus.head = tail.head;
+			size--;
+		}else if(tail.value == value && tail.head != null) {
+			Node nod = tail.previus;
+			nod.head = tail.head;
+			tail.previus = null;
+			nod.next = null;
+			size--;
+		}else if(tail.head.value == value) {
+			Node nod = tail.head;
+			tail.head = nod.next;
+			nod.next.previus = null;
+			nod.next = null;
+			size--;
+		}else {
+			Node nod = tail.head;
+			while(nod.head == null) {
+				
+				if(nod.value == value) {
+					
+					nod.next.previus = nod.previus;
+					nod.previus.next = nod.next;
+					nod.next = null;
+					nod.previus = null;
+					size--;
+                    break;
+				}
+				nod = nod.next;
+			}
 		}
 		
 	}
 	
 	public boolean search(int value) {
+		
+		boolean examination = false;
+		
 		if(tail.value == value) {
-			return true;
+			examination = true;
 		}else {
-			return false;
+			Node nod = tail.head;
+			while(nod.next != null) {
+				
+				if(nod.value == value) {
+					examination = true;
+                    break;
+				}
+				nod = nod.next;
+			}
 		}
+		return examination;
 	}
 	
 	public void size() {
@@ -53,24 +91,12 @@ public class LinkedList {
 			Node nod = tail.head;
 			while(nod.next != null) {
 				System.out.println(nod.value);
-				System.out.println("TAIL: " + tail);
-
-				System.out.println("HEAD: " + nod.head);
-				System.out.println("NOD: " + nod);
-				System.out.println("NEXT: " + nod.next);
-				System.out.println("PREVIOS: " + nod.previus);
 
 				nod = nod.next;
 			}
-			System.out.println(nod.value);
-			System.out.println("HEAD: " + nod.head);
-
-	
+			System.out.println(nod.value);	
 		}
 	}
-	
-	
-	
 	class Node{
 		
 		private int value;

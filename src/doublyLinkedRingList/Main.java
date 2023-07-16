@@ -17,6 +17,11 @@ public class Main {
 
 		
 		list.print();
+		
+		System.out.println(list.search(5));
+		
+		list.delete(4);
+		list.print();
 	}
 
 }
